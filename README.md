@@ -4,7 +4,7 @@ Extract a minimum kernel source tree from the Linux kernel source based on a ker
 
 # Getting started
 
-To make sure you have required dependencies, run:
+To make sure you have required dependencies (on Debian/Ubuntu-like systems), run:
 
 ```shell
 make dependencies
@@ -17,3 +17,11 @@ make
 ```
 
 This will download the source tarball, extract it, config it, build it and extract source tree in `src` directory. Building the new source will come soon.
+
+To use a specific version like x.y.z, use:
+
+```shell
+make KERNEL_VERSION=x.y.z
+```
+
+Manual targets are: `dependencies`, `download`, `allnoconfig`, `tinyconfig`, `defconfig`, `menuconfig`, `extract`, `clean`.

@@ -1,6 +1,6 @@
 # Kernel version to use
-VERSION=6.11.7
-VERSION_MAJOR=${firstword ${subst ., ,${VERSION}}}
+KERNEL_VERSION=6.11.7
+KERNEL_VERSION_MAJOR=${firstword ${subst ., ,${KERNEL_VERSION}}}
 
 # Default
 all: clean download tinyconfig extract
@@ -11,25 +11,29 @@ dependencies:
 
 # Download kernel source and extract it
 download:
-	wget https://cdn.kernel.org/pub/linux/kernel/v${VERSION_MAJOR}.x/linux-${VERSION}.tar.xz
-	tar xf linux-${VERSION}.tar.xz
+	wget https://cdn.kernel.org/pub/linux/kernel/v${KERNEL_VERSION_MAJOR}.x/linux-${KERNEL_VERSION}.tar.xz
+	tar xf linux-${KERNEL_VERSION}.tar.xz
 
 # Build the tiny config 
 tinyconfig:
-	cd linux-${VERSION}; \
+	cd linux-${KERNEL_VERSION}; \
 	make tinyconfig;
 
-menuconfig:
-	cd linux-${VERSION}; \
-	make menuconfig;
-
 allnoconfig:
-	cd linux-${VERSION}; \
+	cd linux-${KERNEL_VERSION}; \
 	make allnoconfig;
+
+defconfig:
+	cd linux-${KERNEL_VERSION}; \
+	make defconfig;
+
+menuconfig:
+	cd linux-${KERNEL_VERSION}; \
+	make menuconfig;
 
 # Extract the compiled files
 extract:
-	cd linux-${VERSION}; \
+	cd linux-${KERNEL_VERSION}; \
 	make V=1 -j4 > ../build.log 2>&1; \
 	find . -name "*.o" > ../objects.log; \
 	mkdir ../src; \
@@ -38,4 +42,4 @@ extract:
 	../includes.sh ../includes.log ../src
 
 clean:
-	rm -rf linux-${VERSION}.tar.xz linux-${VERSION} build.log objects.log includes.log src
+	rm -rf linux-${KERNEL_VERSION}.tar.xz linux-${KERNEL_VERSION} build.log objects.log includes.log src
