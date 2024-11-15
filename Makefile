@@ -1,5 +1,5 @@
 # Kernel version to use
-KERNEL_VERSION=6.11.7
+KERNEL_VERSION=6.11.8
 KERNEL_VERSION_MAJOR=${firstword ${subst ., ,${KERNEL_VERSION}}}
 
 # Default

@@ -10,7 +10,7 @@ To make sure you have required dependencies (on Debian/Ubuntu-like systems), run
 make dependencies
 ```
 
-To extract source tree, simply run `make`. Default options are kernel `6.11.7` and `tinyconfig`:
+To extract source tree, simply run `make`. Default options are kernel `6.11.8` and `tinyconfig`:
 
 ```shell
 make
