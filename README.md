@@ -2,7 +2,7 @@
 
 Extract a minimum kernel source tree from the Linux kernel source based on a kernel config
 
-# Getting started
+## Getting started
 
 To make sure you have required dependencies (on Debian/Ubuntu-like systems), run:
 
