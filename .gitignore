@@ -1,3 +1,6 @@
 linux-*
 linux-*/
 build.log
+objects.log
+includes.log
+src/
